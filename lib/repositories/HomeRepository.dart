@@ -25,7 +25,7 @@ class HomeRepository {
   }
 
   List<Post> getRecentPostItems() {
-    return getCelebrityPostItems() + getPopularPostItems();
+    return getCelebrityPostItems() + getPopularPostItems() + getCelebrityPostItems() + getPopularPostItems();
   }
 
   List<Post> getCelebrityPostItems() {

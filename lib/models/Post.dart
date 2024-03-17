@@ -3,10 +3,12 @@ import 'package:base_flutter/models/User.dart';
 class Post {
   final String title;
   final String content;
-  final List<String>? images;
-  final String? link;
-  final String? id;
-  final String? writerCode;
+  final List<String>? images; // ?? 1? 여러개??
+  final String? link; // 동영상 링크등등.
+  final String? id; // 게시글 아이디.
+  final String? writerCode; // 작성자 코드.
+  // 추가로 필요한거
+
 
   Post({
     required this.title,

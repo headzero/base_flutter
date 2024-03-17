@@ -15,11 +15,15 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   HomeRepository repository = HomeRepository();
   List<Post> popularPosts = List.empty();
+  List<Post> celebrityPosts = List.empty();
+  List<Post> recentPosts = List.empty();
 
   @override
   void initState() {
     repository.fetchData().then((resultData) => setState(() {
           popularPosts = resultData['popular']!;
+          celebrityPosts = resultData['celebrity']!;
+          recentPosts = resultData['recents']!;
         }));
     super.initState();
   }
@@ -31,41 +35,72 @@ class HomeScreenState extends State<HomeScreen> {
         leading: const Icon(Icons.home_outlined),
         title: const Text("Home"),
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16, 16, 0, 16),
-                child: Text(
-                  'By Genre',
-                ),
-              ),
-              categoryFilter(),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24, 16, 0, 16),
-                child: Text(
-                  'Popular Casts',
-                ),
-              ),
-              popularCasts(),
-              const Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24, 16, 0, 16),
-                child: Text(
-                  'Celebrity Favorites',
-                ),
-              ),
-              celebrityFavorites(),
-              const SizedBox(
-                height: 40,
-                width: double.infinity,
-              )
-            ],
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: popularCastsWidget(),
           ),
-        ),
+          SliverGrid(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // 2칸짜리 그리드
+              childAspectRatio: 1, // 그리드 아이템의 비율
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                // 여기서는 실제 items 리스트에서 첫 번째 아이템을 제외하고 처리합니다.
+                print("sliverChildIndex : $index");
+                Post postItem =
+                    recentPosts[index]; // 2 = offset above 2 widgets
+                return postCardWidget(postItem);
+              },
+              childCount: recentPosts.length - 1, // 첫 번째 아이템을 제외한 수
+            ),
+          ),
+        ],
       ),
+      // body: SafeArea(child: ListView.builder(itemBuilder: (context, index) {
+      //   if (index == 0) {
+      //     return popularCastsWidget();
+      //   } else if (index == 1) {
+      //     return celebrityFavorites();
+      //   } else {
+      //     Post postItem = recentPosts[index - 2]; // 2 = offset above 2 widgets
+      //     return postCardWidget(postItem);
+      //   }
+      // })),
+      // child: SingleChildScrollView(
+      //   child: Column(
+      //     mainAxisSize: MainAxisSize.max,
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       const Padding(
+      //         padding: EdgeInsetsDirectional.fromSTEB(16, 16, 0, 16),
+      //         child: Text(
+      //           'By Genre',
+      //         ),
+      //       ),
+      //       categoryFilter(),
+      //       const Padding(
+      //         padding: EdgeInsetsDirectional.fromSTEB(24, 16, 0, 16),
+      //         child: Text(
+      //           'Popular Casts',
+      //         ),
+      //       ),
+      //       popularCasts(),
+      //       const Padding(
+      //         padding: EdgeInsetsDirectional.fromSTEB(24, 16, 0, 16),
+      //         child: Text(
+      //           'Celebrity Favorites',
+      //         ),
+      //       ),
+      //       celebrityFavorites(),
+      //       const SizedBox(
+      //         height: 40,
+      //         width: double.infinity,
+      //       )
+      //     ],
+      //   ),
+      // ),
     );
   }
 
@@ -180,7 +215,7 @@ class HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Padding popularCasts() {
+  Widget popularCastsWidget() {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
       child: Container(
@@ -199,38 +234,35 @@ class HomeScreenState extends State<HomeScreen> {
   }
 
   Widget postCardWidget(Post postItem) {
-    return Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-              child: Container(
-                width: 160,
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.all(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image(
-                          image: CachedNetworkImageProvider(
-                              postItem.images?.first ?? ""),
-                          width: 140,
-                          height: 140,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        postItem.title,
-                      ),
-                    ],
-                  ),
-                ),
+    return Container(
+      width: 160,
+      height: 200,
+      alignment: AlignmentDirectional.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsetsDirectional.all(8),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: Image(
+                image: CachedNetworkImageProvider(postItem.images?.first ?? ""),
+                width: 140,
+                height: 140,
+                fit: BoxFit.cover,
               ),
-            );
+            ),
+            Text(
+              postItem.title,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Padding categoryFilter() {
