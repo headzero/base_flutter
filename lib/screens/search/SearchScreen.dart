@@ -57,7 +57,7 @@ class SearchScreenState extends State<SearchScreen> {
                     ),
                   ))),
           SliverToBoxAdapter(
-            child: CategorySelectWidget(),
+            child: categoryFilterWidget(),
           ),
           SliverGrid(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -75,49 +75,6 @@ class SearchScreenState extends State<SearchScreen> {
         ],
       ),
     );
-  }
-
-  Widget CategorySelectWidget() {
-    return const Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-    );
-
-    // Row(
-    //   mainAxisSize: MainAxisSize.max,
-    //   mainAxisAlignment: MainAxisAlignment.start,
-    //   children: [];
-
-    // Padding(
-    // padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-    // child: Container(
-    // width: 160,
-    // height: 200,
-    // decoration: BoxDecoration(
-    // borderRadius: BorderRadius.circular(12),
-    // ),
-    // child: Padding(
-    // padding: const EdgeInsetsDirectional.all(8),
-    // child: Column(
-    // mainAxisSize: MainAxisSize.max,
-    // crossAxisAlignment: CrossAxisAlignment.start,
-    // children: [
-    // ClipRRect(
-    // borderRadius: BorderRadius.circular(12),
-    // child: const Image(
-    // image: CachedNetworkImageProvider(
-    // 'https://images.unsplash.com/photo-1668536784894-f8113d91f991?w=500&h=500'),
-    // width: 140,
-    // height: 140,
-    // fit: BoxFit.cover,
-    // ),
-    // ),
-    // const Text(
-    // 'The Daily',
-    // ),
-    // ],
-    // ),
-    // ),
-    // ),;
   }
 
   Widget horizontalCastsWidget(String titleText, List<Post> targetPosts) {
@@ -174,9 +131,9 @@ class SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Padding categoryFilter() {
+  Widget categoryFilterWidget() {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
+      padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 4),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -184,78 +141,31 @@ class SearchScreenState extends State<SearchScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-              child: Container(
-                width: 160,
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Padding(
-                  padding: EdgeInsetsDirectional.all(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Technology',
-                      ),
-                      Text(
-                        'Explore Now',
-                      ),
-                    ],
-                  ),
-                ),
+              padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
+              child: OutlinedButton(
+                onPressed: () {},
+                child: Text("Category1"),
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-              child: Container(
-                width: 160,
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Padding(
-                  padding: EdgeInsetsDirectional.all(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Business',
-                      ),
-                      Text(
-                        'Explore Now',
-                      ),
-                    ],
-                  ),
-                ),
+              padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+              child: OutlinedButton(
+                onPressed: () {},
+                child: Text("Category2"),
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 0),
-              child: Container(
-                width: 160,
-                height: 100,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Padding(
-                  padding: EdgeInsetsDirectional.all(8),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Health',
-                      ),
-                      Text(
-                        'Explore Now',
-                      ),
-                    ],
-                  ),
-                ),
+              padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 0, 0),
+              child: OutlinedButton(
+                onPressed: () {},
+                child: Text("Category3"),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(8, 0, 16, 0),
+              child: OutlinedButton(
+                onPressed: () {},
+                child: Text("Category4"),
               ),
             ),
           ],
