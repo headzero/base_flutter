@@ -1,4 +1,5 @@
 import 'package:base_flutter/screens/home/HomeScreen.dart';
+import 'package:base_flutter/screens/search/SearchScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class TabBase extends StatefulWidget {
 class TabBaseState extends State<TabBase> {
   var _selectedIndex = 0;
 
-  final List<Widget> _widgetOptions = <Widget>[const HomeScreen()];
+  final List<Widget> _widgetOptions = <Widget>[const HomeScreen(), const SearchScreen()];
 
   @override
   Widget build(BuildContext context) {
