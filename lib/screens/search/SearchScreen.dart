@@ -28,7 +28,6 @@ class SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.home_outlined),
         title: const Text("Search"),
       ),
       body: CustomScrollView(
