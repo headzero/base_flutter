@@ -74,7 +74,7 @@ class HomeScreenState extends State<HomeScreen> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
+          padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 8),
           child: Text(titleText),
         ),
         SizedBox(
