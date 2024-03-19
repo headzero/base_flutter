@@ -13,7 +13,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class SearchScreenState extends State<SearchScreen> {
-  final TextEditingController _searchController = TextEditingController();
   SearchRepository repository = SearchRepository();
   List<Post> recentPosts = List.empty();
 
@@ -73,28 +72,6 @@ class SearchScreenState extends State<SearchScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget horizontalCastsWidget(String titleText, List<Post> targetPosts) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0, 8, 0, 8),
-          child: Text(titleText),
-        ),
-        SizedBox(
-            width: double.infinity,
-            height: 200,
-            child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: targetPosts.length,
-                itemBuilder: (context, index) {
-                  Post postItem = targetPosts[index];
-                  return postCardWidget(postItem);
-                }))
-      ],
     );
   }
 
