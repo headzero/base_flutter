@@ -19,7 +19,7 @@ class HomeRepository {
     Map<String, List<Post>> groupedPostItems = {};
     groupedPostItems['popular'] = getPopularPostItems();
     groupedPostItems['celebrity'] = getCelebrityPostItems();
-    groupedPostItems['recents'] = getRecentPostItems();
+    groupedPostItems['recent'] = getRecentPostItems();
 
     return groupedPostItems;
   }
