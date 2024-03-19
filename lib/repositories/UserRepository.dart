@@ -1,8 +1,9 @@
 import 'package:base_flutter/models/Post.dart';
+import 'package:base_flutter/models/User.dart';
 
 class UserRepository {
-  Future<List<Post>> fetchDataByCategory(String categoryType) async {
-    return getRecentPostItems();
+  Future<User> fetchUserData(String code) async {
+    return User(name: "Joseph Hale", message: "Craft anything", imageUrl: "https://fastly.picsum.photos/id/491/300/300.jpg?hmac=nqxHz8st4gF72CiLOQovPViZnuvh7nKSmJjMwyfcmW8", code: "test1234");
   }
 
   Future<List<Post>> fetchDataByUser() async {

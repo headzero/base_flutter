@@ -28,4 +28,8 @@ class User {
       'code': code,
     };
   }
+
+  static User empty() {
+    return User(name: "", message: "", imageUrl: "", code: "");
+  }
 }
