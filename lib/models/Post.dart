@@ -9,7 +9,6 @@ class Post {
   final String? writerCode; // 작성자 코드.
   // 추가로 필요한거
 
-
   Post({
     required this.title,
     required this.content,
@@ -21,14 +20,14 @@ class Post {
 
   factory Post.fromJson(Map<String, dynamic> json) {
     return Post(
-        title: json['title'],
-        content: json['content'],
-        images: json['images'] != null
-            ? (json['images'] as List).map((e) => e.toString()).toList()
-            : [],
-        link: json['link'],
-        id: json['_id'],
-        writerCode: json['writerCode'],
+      title: json['title'],
+      content: json['content'],
+      images: json['images'] != null
+          ? (json['images'] as List).map((e) => e.toString()).toList()
+          : [],
+      link: json['link'],
+      id: json['_id'],
+      writerCode: json['writerCode'],
     );
   }
 
@@ -42,4 +41,7 @@ class Post {
     };
   }
 
+  static Post empty() {
+    return Post(title: "", content: "");
+  }
 }

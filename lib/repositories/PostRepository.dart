@@ -13,6 +13,9 @@ class PostRepository {
 
   Future<Post> fetchData(String id) async {
     return Post(title: 'Oprah\'s Book Club', content: "Oprah's Book Club encourages avid readers to discover new authors and books that ignite conversation. Take a look at Oprah's complete list of recommended ...", images: [
+      'https://images.unsplash.com/photo-1421757350652-9f65a35effc7?w=500&h=500',
+      'https://images.unsplash.com/photo-1421757350652-9f65a35effc7?w=500&h=500',
+      'https://images.unsplash.com/photo-1421757350652-9f65a35effc7?w=500&h=500',
       'https://images.unsplash.com/photo-1421757350652-9f65a35effc7?w=500&h=500'
     ]);
   }

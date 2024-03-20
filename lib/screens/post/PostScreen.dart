@@ -15,8 +15,8 @@ class PostScreen extends StatefulWidget {
 
 class PostScreenState extends State<PostScreen> {
   PostRepository repository = PostRepository();
-  late Post post;
-  late User user;
+  Post post = Post.empty();
+  User user = User.empty();
 
   @override
   void initState() {
@@ -38,12 +38,23 @@ class PostScreenState extends State<PostScreen> {
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
-          children: [
-            ProfileWidget(),
-          ],
+          children: [TitleWidget(), ProfileWidget(), PostWidget()],
         ),
       ),
     );
+  }
+
+  Widget TitleWidget() {
+    return Container(
+        width: double.maxFinite,
+        alignment: AlignmentDirectional.center,
+        decoration: const BoxDecoration(color: Colors.black12),
+        child: Padding(
+            padding: const EdgeInsetsDirectional.fromSTEB(16, 20, 16, 20),
+            child: Text(
+              post.title,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+            )));
   }
 
   Widget ProfileWidget() {
@@ -54,18 +65,19 @@ class PostScreenState extends State<PostScreen> {
         child: Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(16, 20, 16, 20),
           child: Row(mainAxisSize: MainAxisSize.max, children: [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image(
-                  image: CachedNetworkImageProvider(user.imageUrl ?? ""),
-                  width: 60,
-                  height: 60,
-                  fit: BoxFit.cover,
+            if (user.imageUrl?.isNotEmpty == true)
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image(
+                    image: CachedNetworkImageProvider(user.imageUrl ?? ""),
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -86,6 +98,48 @@ class PostScreenState extends State<PostScreen> {
               ],
             ),
           ]),
+        ));
+  }
+
+  Widget PostWidget() {
+    return Container(
+        width: double.maxFinite,
+        alignment: AlignmentDirectional.center,
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(16, 20, 16, 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Text(
+                    post.content,
+                    style: const TextStyle(fontSize: 16),
+                  )),
+              if (post.images?.isNotEmpty == true)
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                    child: Row(
+                      children: [
+                        for (var image in post.images!)
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Image(
+                              image: CachedNetworkImageProvider(image),
+                              width: 140,
+                              height: 140,
+                              fit: BoxFit.cover,
+                            ),
+                          )
+                      ],
+                    ),
+                  ),
+                )
+            ],
+          ),
         ));
   }
 }
