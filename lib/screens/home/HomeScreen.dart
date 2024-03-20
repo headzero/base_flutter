@@ -58,7 +58,7 @@ class HomeScreenState extends State<HomeScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 Post postItem = recentPosts[index];
-                return postCardWidget(postItem);
+                return postCardWidget(context, postItem);
               },
               childCount: recentPosts.length,
             ),
@@ -84,7 +84,7 @@ class HomeScreenState extends State<HomeScreen> {
                 itemCount: targetPosts.length,
                 itemBuilder: (context, index) {
                   Post postItem = targetPosts[index];
-                  return postCardWidget(postItem);
+                  return postCardWidget(context, postItem);
                 }))
       ],
     );

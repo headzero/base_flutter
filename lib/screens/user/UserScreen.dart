@@ -83,7 +83,7 @@ class UserScreenState extends State<UserScreen> {
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
                 Post postItem = recentPosts[index];
-                return postCardWidget(postItem);
+                return postCardWidget(context, postItem);
               },
               childCount: recentPosts.length,
             ),
