@@ -44,6 +44,7 @@ dependencies:
 
   # image view
   cached_network_image: ^3.3.1
+  photo_view: ^0.14.0
 
   # image upload
   image_picker: ^1.0.7

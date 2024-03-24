@@ -8,7 +8,7 @@ Widget postCardWidget(BuildContext context, Post postItem) {
   return GestureDetector(
     onTap: (){
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const PostScreen()));
+          CupertinoPageRoute(builder: (context) => const PostScreen()));
     },
     child: Container(
       width: 160,

@@ -1,7 +1,9 @@
 import 'package:base_flutter/models/Post.dart';
 import 'package:base_flutter/models/User.dart';
 import 'package:base_flutter/repositories/PostRepository.dart';
+import 'package:base_flutter/screens/imageview/ImageViewer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PostScreen extends StatefulWidget {
@@ -125,13 +127,22 @@ class PostScreenState extends State<PostScreen> {
                     child: Row(
                       children: [
                         for (var image in post.images!)
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
-                            child: Image(
-                              image: CachedNetworkImageProvider(image),
-                              width: 140,
-                              height: 140,
-                              fit: BoxFit.cover,
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  CupertinoPageRoute(
+                                      builder: (context) =>
+                                          ImageViewer(imageUrl: image)));
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                              child: Image(
+                                image: CachedNetworkImageProvider(image),
+                                width: 140,
+                                height: 140,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           )
                       ],
