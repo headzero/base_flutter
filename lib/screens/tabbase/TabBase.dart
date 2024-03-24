@@ -1,6 +1,7 @@
 import 'package:base_flutter/screens/home/HomeScreen.dart';
 import 'package:base_flutter/screens/search/SearchScreen.dart';
 import 'package:base_flutter/screens/user/UserScreen.dart';
+import 'package:base_flutter/screens/write/WritePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,11 @@ class TabBase extends StatefulWidget {
 class TabBaseState extends State<TabBase> {
   var _selectedIndex = 0;
 
-  final List<Widget> _widgetOptions = <Widget>[const HomeScreen(), const SearchScreen(), const UserScreen()];
+  final List<Widget> _widgetOptions = <Widget>[
+    const HomeScreen(),
+    const SearchScreen(),
+    const UserScreen()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +67,10 @@ class TabBaseState extends State<TabBase> {
                   Expanded(
                     child: InkWell(
                       onTap: () {
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) => const WritePage()));
+                        Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => const WritePage()));
                       },
                       child: const SizedBox.expand(
                         child: const Icon(

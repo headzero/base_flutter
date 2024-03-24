@@ -41,6 +41,7 @@ dependencies:
   # etc actions
   push: ^2.1.0
   share_plus: ^7.2.2
+  fluttertoast: ^8.2.2
 
   # image view
   cached_network_image: ^3.3.1
