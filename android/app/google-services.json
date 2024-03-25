@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "808745090828",
+    "project_id": "aeon-95fc6",
+    "storage_bucket": "aeon-95fc6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808745090828:android:822c1f56a7ddaf471a5329",
+        "android_client_info": {
+          "package_name": "com.zero.base.base_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaZc5ATQjxGZZSHO2-LlKLrS0B30XDv84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
