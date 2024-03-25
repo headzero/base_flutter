@@ -4,8 +4,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import 'ImageUploader.dart';
 
-class WritePage extends StatefulWidget {
-  const WritePage({super.key, this.modifyPost});
+class WriteScreen extends StatefulWidget {
+  const WriteScreen({super.key, this.modifyPost});
 
   final Post? modifyPost;
 
@@ -13,7 +13,7 @@ class WritePage extends StatefulWidget {
   State<StatefulWidget> createState() => WriteState();
 }
 
-class WriteState extends State<WritePage> {
+class WriteState extends State<WriteScreen> {
   bool isModify = false;
   String postId = "";
   String modifyId = "";
@@ -44,7 +44,6 @@ class WriteState extends State<WritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color(0xFFFFF9EF),
           title: const Text(
             "Write",
             style: TextStyle(fontSize: 16),
@@ -65,7 +64,6 @@ class WriteState extends State<WritePage> {
             )
           ],
         ),
-        backgroundColor: const Color(0xFFFFF9EF),
         body: Stack(
           children: [
             GestureDetector(

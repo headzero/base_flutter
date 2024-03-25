@@ -1,7 +1,7 @@
 import 'package:base_flutter/screens/home/HomeScreen.dart';
 import 'package:base_flutter/screens/search/SearchScreen.dart';
 import 'package:base_flutter/screens/user/UserScreen.dart';
-import 'package:base_flutter/screens/write/WritePage.dart';
+import 'package:base_flutter/screens/write/WriteScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -70,11 +70,24 @@ class TabBaseState extends State<TabBase> {
                         Navigator.push(
                             context,
                             CupertinoPageRoute(
-                                builder: (context) => const WritePage()));
+                                builder: (context) => const WriteScreen()));
                       },
                       child: const SizedBox.expand(
                         child: const Icon(
                           Icons.post_add_outlined,
+                          size: 28,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: () {
+                        onClickTab(2);
+                      },
+                      child: const SizedBox.expand(
+                        child: const Icon(
+                          Icons.favorite_border_outlined,
                           size: 28,
                         ),
                       ),
@@ -93,19 +106,6 @@ class TabBaseState extends State<TabBase> {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: () {
-                        onClickTab(3);
-                      },
-                      child: const SizedBox.expand(
-                        child: const Icon(
-                          Icons.settings_outlined,
-                          size: 28,
-                        ),
-                      ),
-                    ),
-                  )
                 ]),
           ),
         ));
